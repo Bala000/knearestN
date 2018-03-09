@@ -32,7 +32,7 @@ class knn:
             if val > maxVal:
                 maxVal = val
                 maxKey = key
-        print("Final Class",maxKey)
+   #     print("Final Class",maxKey)
         return maxKey
 
     def accuracy_value(self,X,Y,X_test,Y_test,K):
@@ -59,36 +59,26 @@ start_time = datetime.datetime.now()
 print()
 X_train = data[:6000,:]
 Y_train = target[:6000]
-X_train_test = data[:6000,:]
-Y_train_test = target[:6000]
-X_test_one = data[69880:69881, :]
-Y_test_one = target[69880]
 X_test = data[69000:70000, :]
 Y_test = target[69000:70000]
-print(X_train[99,:])
 knn_model = knn()
 #knn_model.predict_model(X_train, Y_train, X_test_one, 9)
-knn_model.accuracy_value(X_train, Y_train, X_test, Y_test, 39)
-print("difference =", datetime.datetime.now() - start_time)
-'''
+#knn_model.accuracy_value(X_train, Y_train, X_test, Y_test, 39)
 accuracyListTest = []
-accuracyListTrain = []
 kVal = [1, 9, 19, 29, 39, 49, 59, 69, 79, 89, 99]
 for i in kVal:
     accuracyListTest.append(1.0 - knn_model.accuracy_value(X_train, Y_train, X_test, Y_test, i))
-    accuracyListTrain.append(1.0 - knn_model.accuracy_value(X_train,Y_train,X_train_test,Y_train_test,i))
-
+print("difference =", datetime.datetime.now() - start_time)
 print("Plotting Started")
 plt.plot(accuracyListTest, label="Testing Error")
-plt.plot(accuracyListTrain, label="Training Error")
 plt.xticks(range(11),kVal)
 plt.xlabel('Different K values')
 plt.ylabel('accuracy')
-plt.title('Testing Error vs Training Error')
+plt.title('Testing Error')
 plt.legend()
 
 plt.show()
 
 
-'''
+
 
